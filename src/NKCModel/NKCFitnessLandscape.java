@@ -10,40 +10,38 @@ import CrossModelClasses.ParameterOptions;
 import CrossModelClasses.ArrayStringUtils;
 
 /**
- * This is the NKCFitnessLandscape and it stores the relative fitnesses
+ * This is the NKCFitnessLandscape and it stores the relative fitnesses 
  * of locations in the landscape such that orgnaizations on this landscape
  * can calculate their fitness.
- *
- * This uses the NKFitnesslandscape and delegates the functionaility of
+ * 
+ * This uses the NKFitnesslandscape and delegates the functionaility of 
  * some methods to it.
- *
+ * 
  * @author Amy Marshall
  *
  */
 public class NKCFitnessLandscape extends AbstractFitnessLandscape
 {
 	//inputted parameters
-	private int N_size_of;
-	private int K_size_of;
 	private int C_size_of;
 	private int S_size_of;
 	private int X_size_of;
 	private int X_neighbours_or_random;
 	private int X_identical_or_random;
-	private int C_neighbours_or_random;
+	private int C_neighbours_or_random;	
 	private int C_identical_or_random;
 	private int[] species_array_N;
 	private int your_place;
-
+	
 	//arrays to be created
 	private int X_used;
 	private int[] array_X;
 	private int[][][] array_C;
 
 	/**
-	 * Constructor creates the fitness landscape assigning user parameters to
+	 * Constructor creates the fitness landscape assigning user parameters to 
 	 * variables of the ladnscape
-	 *
+	 * 
 	 * @param fitness_range_dp the decimal places the fitness range goes to
 	 * @param N_size_of the number of characteristics in an orgnaiztaion
 	 * @param K_size_of the number of characteristics each N depends on
@@ -59,13 +57,13 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 	 * @param species_array_N an array containing reference to the size of the other species N
 	 * @param your_place this species place in the species array
 	 * @param array_A the number of states each N hass to choose form
-	 * @param fitness_method_averaging_weightings whether averaging should be IDENTICAL or WEIGHTED
+	 * @param fitness_method_averaging_weightings whether averaging should be IDENTICAL or WEIGHTED 
 	 * @param fitness_method whether fitness should be calculated using the AVERAGE or WEAKEST
 	 */
-	public NKCFitnessLandscape(int fitness_range_dp, int N_size_of,
-			int K_size_of, int A_size_of, int C_size_of, int S_size_of,
-			int X_size_of, int K_identical_or_random, int K_neighbours_or_random,
-			int X_identical_or_random, int X_neighbours_or_random, int C_identical_or_random,
+	public NKCFitnessLandscape(int fitness_range_dp, int N_size_of, 
+			int K_size_of, int A_size_of, int C_size_of, int S_size_of, 
+			int X_size_of, int K_identical_or_random, int K_neighbours_or_random, 
+			int X_identical_or_random, int X_neighbours_or_random, int C_identical_or_random, 
 			int C_neighbours_or_random, int[] species_array_N, int your_place, int[] array_A,
 			int fitness_method_averaging_weightings, int fitness_method)
 	{
@@ -85,7 +83,7 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 		this.species_array_N = species_array_N;
 		this.your_place = your_place;
 		this.fitness_range_dp = fitness_range_dp;
-
+		
 		//initializing the random generators
 		MersenneTwister generator1;
 		MersenneTwister generator2;
@@ -104,21 +102,21 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 
 	    normal = new Normal(1.0, 1.0, generator1);
 	    uniform = new Uniform(generator2);
-
+		
 	    //creating the arrays for distribution of K, X and C
 	    array_K = createKList();
 	    weightings = createWeightingsList();
-
+	    
 	    createXList();
 	    createCList();
 	}
-
+	
 	/**
 	 * Creating an array of how many X species each characteristic depends upon
-	 *
+	 * 
 	 */
 	private void createXList()
-	{
+	{	
 		if(X_identical_or_random == ParameterOptions.IDENTICAL)
 		{//if all X should be identical
 			X_used = X_size_of;
@@ -128,11 +126,11 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 			//X_used = uniform.nextIntFromTo(0, X_size_of);
 			if(X_size_of*2 >= S_size_of)
 			{
-				int difference = S_size_of - X_size_of - 1;
+				int difference = S_size_of - X_size_of - 1; 
 				X_used = uniform.nextIntFromTo(X_size_of-difference, X_size_of+difference);
 			}
 			else
-			{
+			{ 
 				X_used = uniform.nextIntFromTo(0, X_size_of*2);
 			}
 		}
@@ -140,13 +138,13 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 		{//if K is meant to be random in a gaussian pattern
 			int difference = S_size_of - X_size_of - 1;
 			int diff_2 = X_size_of;
-
+			
 			//check that the differewnce isn't bigger than the origional number
 			if(difference > diff_2)
 			{//if it is then use the original number instead
 				difference = diff_2;
 			}
-
+			
 			double next_gaussian = 0.0;
 			while(next_gaussian == 0.0)
 			{
@@ -168,7 +166,7 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 		
 		//initializing the X_array
 		array_X = new int[X_used];
-
+		
 		if(X_neighbours_or_random == ParameterOptions.NEIGHBOURS)
 		{//if the neighbours of S are to be used used
 			//starting at the current position in the species array
@@ -177,8 +175,8 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 			{//for every S species in the X array
 				if(species + 1 < S_size_of)
 				{
-					//if the next species in the species arrary is smaller
-					//than the total number of species
+					//if the next species in the species arrary is smaller 
+					//than the total number of species 
 					species++;
 				}
 				else
@@ -201,7 +199,7 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 					//randomly assign a next X and set done to be true
 					array_X[s] = uniform.nextIntFromTo(0, S_size_of-1);
 					done = true;
-
+					
 					if(array_X[s] == your_place)
 					{//if the species choses itself to link to
 						//then set done as false in order to try again
@@ -221,13 +219,13 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 				}//done while !done
 			}//end for each S
 		}//end if X_neighbours_or_random == RANDOM
-
+		
 	}
-
+	
 	/**
-	 * Creating an array of how many and which C each characteristic
+	 * Creating an array of how many and which C each characteristic 
 	 * depends upon from each species
-	 *
+	 * 
 	 * @return
 	 */
 	private void createCList()
@@ -253,13 +251,13 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 				{//for every species this species is dependant on
 					//find the dependant species
 					int species = array_X[x];
-
+					
 					if(C_size_of*2 > species_array_N[species])
 					{//if 2*C is greater than the N of that species
 						//find the differnect
 						int difference = species_array_N[species] - C_size_of;
-						//find a random number for C plus or minus that difference
-
+						//find a random number for C plus or minus that difference 
+			
 						C[n][x] = uniform.nextIntFromTo(C_size_of-difference-1, C_size_of+difference-1);
 					}
 					else
@@ -278,10 +276,10 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 				{
 					//find the dependant species
 					int species = array_X[x];
-
+					
 					int difference = species_array_N[species] - C_size_of;
 					int diff_2 = C_size_of;
-
+					
 					//check that the difference isn't infact bigger than the origional
 					if(difference > diff_2)
 					{//if it is use the origional
@@ -298,7 +296,7 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 							next_gaussian = 0.0;
 						}
 					}
-
+					
 					//multiple it by the difference*2 then it is between 0 and difference*2
 					next_gaussian = next_gaussian * (difference * 2);
 					//move this so it is in the range K-difference to K+difference
@@ -308,8 +306,8 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 				}
 			}
 		}
-
-		if(C_neighbours_or_random == ParameterOptions.NEIGHBOURS)
+		
+		if(C_neighbours_or_random == ParameterOptions.NEIGHBOURS)	
 		{
 			//initialize the C array
 			array_C = new int[N_size_of][X_used][];
@@ -358,11 +356,11 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 			}//end for every N species
 		}//end else C_neighbours_or_random == RANDOM
 	}
-
+	
 	/**
 	 * Use the detail given to work out the fitness of this location
-	 *
-	 * @param fitness_method			characteristic dependancies are averaged, weakest taken or weighted
+	 * 
+	 * @param fitness_method			characteristic dependancies are averaged, weakest taken or weighted 
 	 * @param uniform_or_random_K		number of dependancies of is K the average number is K
 	 * @param neighbours_or_random_K	is K made up of the closest characteristics to N or is K random
 	 */
@@ -380,19 +378,19 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 			{
 				C_part_of_Array = C_part_of_Array + array_C[n][x].length;
 			}
-
-
+		
+			
 			//create a new array to hold the states of that N, K and C
 			int[] K = new int[1 + K_size_of + C_part_of_Array];
-
+			
 			//add the state of N to the array
 			K[0] = state_array[n];
 			//add the states of K to the array
 			for(int k = 0; k < array_K[n].length; k++)
-			{
+			{	
 				K[k+1] = state_array[array_K[n][k]];
-			}
-
+			}	
+			
 			//for every species thais species depends upon
 			int nxt = array_K[n].length + 1;
 			for (int x = 0 ; x < array_X.length; x++)
@@ -409,12 +407,12 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 					nxt++;
 				}
 			}
-
+			
 			double new_fitness = characteristicFitness(n,K);
-
+			
 			//saving the average fitness
 			average_fitness = average_fitness + new_fitness;
-
+			
 			//saving the weakest fitness
 			if(new_fitness < weakest_fitness)
 			{
@@ -439,5 +437,5 @@ public class NKCFitnessLandscape extends AbstractFitnessLandscape
 			return weakest_fitness;
 		}
 	}
-
+	
 }
