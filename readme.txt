@@ -1,4 +1,9 @@
 
+
+
+
+*This is my fork of Sendero, with user selected N & K in the nkcs model*
+
 ---------------
 sendero project
 ---------------
