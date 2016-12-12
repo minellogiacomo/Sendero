@@ -1,0 +1,122 @@
+runs: 1
+
+N_size_of {
+        set_list: 8
+        {
+                runs: 1
+                K_size_of {
+                        set_list: 2
+                        {
+                                runs: 1
+                                A_size_of {
+                                       set_list: 2
+                                }
+                        }
+                }
+        }
+}
+
+data_collection_file_name {
+set_string: NKoutput.txt
+}
+
+fitness_range_dp {
+set: 2
+}
+
+A_identical_or_random {
+set: 0
+}
+
+jump_J {
+set: 0
+}
+
+K_identical_or_random {
+set: 0
+}
+
+K_neighbours_or_random {
+set: 0
+}
+
+fitness_method {
+set: 0
+}
+
+organizations_no_of {
+set: 100
+}
+
+fitness_threshold {
+set: 0
+}
+
+jump_successful_limit {
+set: 1
+}
+
+jump_search_time_limit {
+set: 50
+}
+
+organization_walk_type {
+set: 0
+}
+
+fitness_method_averaging_weightings {
+set: 0
+}
+
+comms_network {
+set_boolean: false
+}
+
+comms_network_type {
+set: 0
+}
+
+comms_network_change {
+set_boolean: false
+}
+
+comms_network_change_chance {
+set: 0
+}
+
+comms_network_change_frequency {
+set: 0
+}
+
+comms_network_small_world_connect_radius {
+set: 0
+}
+
+life_and_death {
+set_boolean: false
+}
+
+life_and_death_threashold {
+set: 0
+}
+
+life_and_death_new_org_method {
+set: 0
+}
+
+comms_network_connection_probability_percentage {
+set: 0
+}
+
+comms_network_rewire_probability_percentage {
+set: 0
+}
+
+collect_data {
+set: 2
+}
+
+simulation_halt {
+set: 2500
+}
+

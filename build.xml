@@ -1,0 +1,86 @@
+<project name="sendero" basedir="." default="main">
+
+	<property name="lib.dir" value="depends"/>
+	<property name="build.dir" value="build"/>
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="src.dir" value="src"/>
+	<property name="dist.dir" value="dist"/>
+	<property name="params.dir" value="param_files_to_copy" />
+	<property name="others.dir" value="other_files_to_copy" />
+
+	<path id="classpath"> <fileset dir="${lib.dir}" includes="**/*.jar"/>
+	</path>
+
+       <target name="init">
+		
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build.dir}"/>
+       </target>
+
+       <target name="compile" depends="init" description="compile the source " >
+		<!-- Compile the java code from ${src.dir} into ${build.dir} -->
+		<javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath"/>
+	</target>
+
+  <target name="dist" depends="compile" description="generate the distribution" >
+	 <property name="jarfilename" value="${dist.dir}/sendero.jar"    />
+  	<!-- Create the distribution directory -->
+	    <mkdir dir="${dist.dir}"/>
+	    <!-- Delete old files if they exist -->
+	    <delete file="$jarfilename" />
+	    
+	    
+	    <!-- Convert project class path to string property -->
+	    <!-- cheat using pathsep to get classpath pointing to dist/lib/*.jar -->
+	    <pathconvert property="mf.classpath" pathsep=" lib/">
+	    	<path refid="classpath" />
+		<flattenmapper />
+	    </pathconvert>
+	    
+	    <!-- Put everything in ${build} into the dist/sendero.jar file -->
+	    <jar jarfile="${dist.dir}/sendero.jar" 
+	    	 basedir="${build.dir}"
+		 includes="**/*.class" >
+		 
+		 <manifest>
+			<attribute name="Main-Class" value="CrossModelClasses.MainClass"/>
+			<attribute name="Class-Path" value="${mf.classpath}" />
+		</manifest>
+
+	    </jar>
+	    
+	    <!-- copy all jar files from depends dir to dist/lib -->
+	    <copy todir="${dist.dir}/lib" flatten="true">
+	    	<fileset dir="${lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	    </copy>
+	    
+	    <!-- copy param files from param_files_to_copy to dist -->
+	    <copy todir="${dist.dir}">
+	    	<fileset dir="${params.dir}">
+			<include name="*"/>
+		</fileset>
+	    </copy>
+	    
+	    <!-- copy other files from other_files_to_copy to dist -->
+	    <copy todir="${dist.dir}">
+	    	<fileset dir="${others.dir}">
+			<include name="*"/>
+		</fileset>
+	    </copy>
+
+	    
+
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build.dir}"/>
+    <delete dir="${dist.dir}"/>
+  </target>
+
+  <target name="main" depends="clean, dist"/>
+  
+</project>
