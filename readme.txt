@@ -15,7 +15,7 @@ wiki.bath.ac.uk/display/sendero
 1. Building sendero from source
 -------------------------------
 
-sendero requires JRE 1.5 (or later) to run, and JDK 1.5 (or later) to compile.
+sendero requires JRE 1.8 (or later).
 
 The application can be built using Apache Ant and the supplied script
 "build.xml". Install ant, navigate to this folder and type "ant" at the command
