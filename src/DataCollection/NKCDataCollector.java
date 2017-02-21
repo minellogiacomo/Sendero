@@ -54,7 +54,7 @@ public class NKCDataCollector
 		this.A_size_of = A_size_of;
 		//END TRY
 		//create a new array of ten sequence graphs
-		graph = new OpenSequenceGraph[10];
+		graph = new OpenSequenceGraph[11];
 	}
 
 	/**
@@ -74,6 +74,7 @@ public class NKCDataCollector
 		OpenSequenceGraph graph7 = graph[7];
 		OpenSequenceGraph graph8 = graph[8];
 		OpenSequenceGraph graph9 = graph[9];
+		OpenSequenceGraph graph10 = graph[10];
 
 		if((collect_data == ParameterOptions.ON_SCREEN)||(collect_data == ParameterOptions.BOTH))
 		{//if collecting data to screen then initilize the grpahs
@@ -156,6 +157,14 @@ public class NKCDataCollector
 			graph9 = new OpenSequenceGraph("Fraction Still Walking", simModel);
 			graph9.setAxisTitles("time", "Still Walking");
 			graph[9] = graph9;
+
+			if (graph10 != null){
+				graph10.dispose();
+			}
+			graph10 = null;
+			graph10 = new OpenSequenceGraph("Equilibri Punteggiati", simModel);
+			graph10.setAxisTitles("time", "Da Definire");
+			graph[10] = graph10;
 		}
 	}
 
@@ -204,15 +213,16 @@ public class NKCDataCollector
 		c[7] = Color.red;
 		c[8] = Color.yellow;
 		c[9] = Color.gray;
+		c[10] = Color.lightGray;
 
 		if((collect_data == ParameterOptions.ON_SCREEN)||(collect_data == ParameterOptions.BOTH))
 		{//set up only if showing on screen
-			int colour = 9;
+			int colour = 10;
 			for(int s = 0; s < organization_species.length; s++)
 			{//for every species
 
 				//choose a colour
-				if(colour != 9)
+				if(colour != 10)
 				{
 					colour++;
 				}
@@ -256,6 +266,8 @@ public class NKCDataCollector
 			}
 			OpenSequenceGraph graph9 = graph[9];
 			graph9.addSequence("faction still walking", new FractionStillWalking(agentList), c[colour]);
+
+			OpenSequenceGraph graph10 = graph[10]; //to-do
 		}
 	}
 
@@ -279,6 +291,7 @@ public class NKCDataCollector
 			OpenSequenceGraph graph7 = graph[7];
 			OpenSequenceGraph graph8 = graph[8];
 			OpenSequenceGraph graph9 = graph[9];
+			OpenSequenceGraph graph10 = graph[10];
 			graph0.step();
 			graph1.step();
 			graph2.step();
@@ -289,6 +302,7 @@ public class NKCDataCollector
 			graph7.step();
 			graph8.step();
 			graph9.step();
+			graph10.step();
 		}
 		if((collect_data == ParameterOptions.TO_FILE)||(collect_data == ParameterOptions.BOTH))
 		{//if collecting to file
