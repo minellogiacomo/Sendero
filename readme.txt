@@ -59,17 +59,6 @@ models, see the wiki at:
 
 http://wiki.bath.ac.uk/display/sendero
 
-IMPORTANT sendero runs can require large amounts of RAM. 
-
-In the event of the program crashing with the error "java.lang.OutOfMemoryError: 
-Java Heap Space", or if performance is poor, try increasing the memory
-available to the Java Virtual Machine (JVM).
-
-Information on JVM memory tuning is given at:
-
-http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp
-
-
 3. Distributing sendero
 -----------------------
 
