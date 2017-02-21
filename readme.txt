@@ -1,7 +1,4 @@
 
-
-
-
 *This is my fork of Sendero, with user selected N & K in the nkcs model*
 
 ---------------
@@ -51,6 +48,8 @@ be run by typing (at the command line):
 
 java -jar sendero.jar nkgui NKdefaultparams.pf
 
+java -jar sendero.jar nkcgui NKCdefaultparams.pf
+
 NOTE for NKC runs, an XML file is required (and is supplied). The location of
 this file is referred to in NKCdefault_params.pf.
 
@@ -58,9 +57,3 @@ For more informtion on running sendero, and the parameter files for NK and NKC
 models, see the wiki at:
 
 http://wiki.bath.ac.uk/display/sendero
-
-3. Distributing sendero
------------------------
-
-To distribute this project, zip up the dist folder (including the lib folder)
-and distribute the ZIP file. The application can be run as described above.
