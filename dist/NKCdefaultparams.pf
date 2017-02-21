@@ -1,0 +1,86 @@
+runs: 1
+
+
+data_collection_file_name {
+set_string: NKCoutput.txt
+}
+
+organizations_no_of {
+set: 1
+}
+
+fitness_range_dp {
+set: 2
+}
+
+S_species {
+set: 5
+}
+
+X_species {
+set: 2
+}
+
+C_links_between_species {
+set: 2
+}
+
+fitness_threshold {
+set: 0
+}
+
+fitness_method {
+set: 0
+}
+
+fitness_method_averaging_weightings {
+set: 0
+}
+
+organization_walk_type {
+set: 0
+}
+
+A_identical_or_random {
+set: 0
+}
+
+K_identical_or_random {
+set: 0
+}
+
+K_neighbours_or_random {
+set: 0
+}
+
+X_neighbours_or_random {
+set: 0
+}
+
+X_identical_or_random {
+set: 0
+}
+
+C_identical_or_random {
+set: 0
+}
+
+C_neighbours_or_random {
+set: 1
+}
+
+collect_data {
+set: 2
+}
+
+simulation_halt {
+set: 500
+}
+
+stop_simulation_early {
+set: 1
+}
+
+xml_file {
+set_string: default_xml_file.xml
+}
