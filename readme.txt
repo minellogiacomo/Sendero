@@ -1,6 +1,8 @@
 
-*This is my fork of Sendero, with user selected N & K in the nkcs model*
+This is my fork of Sendero, with arbitrary N & K in the nkcs model. 
 
+The Sendero Project is based at the University of Bath and is led by Julian Padget (Computer Science) and Richard Vidgen (Management). Sendero has implemented Stuart Kauffman's NK(C) models in REPAST, an agent-based modeling environment. 
+The software was first developed by Amy Marshall and Rick Mellor, for their final year projects while computer science students at the University of Bath. The software developed by Amy has since been developed further and packaged by James Mitchell.
 ---------------
 sendero project
 ---------------
