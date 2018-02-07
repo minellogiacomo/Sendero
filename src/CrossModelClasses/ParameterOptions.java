@@ -16,11 +16,11 @@ public class ParameterOptions
 	public static final int GAUSSIAN = 2;
 	public static final int NEIGHBOURS = 0;
 
-	//how an organization moves over the landscape
+	//how an organism moves over the landscape
 	public static final int WALK = 0;
 	public static final int LONG_JUMP = 1;
                         
-        // order in which NKC species move on the landscape
+        //order in which NKC species move on the landscape
         public static final int SEQUENTIAL = 0;
 
 	//method of calculating fitness
@@ -38,7 +38,7 @@ public class ParameterOptions
 	public static final int RANDOM_NETWORK = 2;
 	public static final int SMALL_WORLD_NETWORK = 3;
 	
-	//organizational life and death
+	//organism life and death
 	public static final int RANDOM_NEW_ORG = 0;
 	public static final int COPY_OLD_ORG = 1;
 	public static final int BOTH = 2;
@@ -48,12 +48,12 @@ public class ParameterOptions
 	public static final int GRAPH_MAXIMUM = 1;
 	public static final int GRAPH_MINIMUM = 2;
 	
-	//Random stuff
+	//random stuff
 	public static final int DATE = 0;
 	public static final int STATIC = 1;
 	public static int SEED = DATE;
 	
-	//orgnaizinal walk tyope
+	//organism walk type
 	public static final int ONE_MUTANT_NEIGHBOUR = 0;
 	public static final int FITTER_DYNAMICS = 1;
 	public static final int GREEDY_DYNAMICS = 2;
