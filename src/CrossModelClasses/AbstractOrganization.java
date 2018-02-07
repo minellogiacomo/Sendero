@@ -6,14 +6,14 @@ import cern.jet.random.Uniform;
 
 /**
  * 
- * The interface by which both NK and NKC Orgnaiztions have to abide
+ * The interface by which both NK and NKC Organisms have to abide
  * 
  * @author Administrator
  *
  */
 public abstract class AbstractOrganization
 {
-//	The location that the organization is currently at
+//	The location that the organism is currently at
 	protected String location_key;
 	protected Double location_fitness;
 	protected AbstractFitnessLandscape landscape;
@@ -42,7 +42,7 @@ public abstract class AbstractOrganization
 	
 	
 	/**
-	 * Move the organization to this location
+	 * Move the organism to this location
 	 * 
 	 * @param location_key	location to move to
 	 */
@@ -63,7 +63,7 @@ public abstract class AbstractOrganization
 	}
 	
 	/**
-	 * Returns the current location of the organization
+	 * Returns the current location of the organism
 	 * SHOULD ONLY BE USED BY THE MODEL CLASS
 	 * 
 	 * @return Location
@@ -91,7 +91,7 @@ public abstract class AbstractOrganization
 	protected abstract boolean adaptiveWalk(String[] C_locations);
 	
 	/**
-	 * get the next neighbour to that organization
+	 * get the next neighbour to that organism
 	 * 
 	 * @return Location of next neighbour
 	 */
