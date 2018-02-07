@@ -1,4 +1,6 @@
-# Sendero NKCS [![HitCount](http://hits.dwyl.io/MGrizzly/Sendero.svg)](http://hits.dwyl.io/MGrizzly/Sendero)
+# Sendero NKCS 
+[![Build Status](https://travis-ci.org/MGrizzly/Sendero.svg?branch=release)](https://travis-ci.org/MGrizzly/Sendero)
+[![HitCount](http://hits.dwyl.io/MGrizzly/Sendero.svg)](http://hits.dwyl.io/MGrizzly/Sendero)
 
 Sendero has implemented Stuart Kauffman's NK(C) models in REPAST, an agent-based modeling environment.
 Further details of the NK(C) models are provided in the University of Bath Working Paper ["Sendero: an extended, agent-based implementation of Kauffman's NKCS model"](https://wiki.bath.ac.uk/download/attachments/15500198/NKCS.pdf?version=1&modificationDate=1241178853000&api=v2).
