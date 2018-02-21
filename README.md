@@ -75,6 +75,10 @@ See also the list of [contributors](https://github.com/MGrizzly/Sendero/contribu
 
 * **Giacomo Minello** [@JackMinello](https://twitter.com/JackMinello) 
 
+## Project referent
+
+* **Guido Fioretti** [Personal site](http://www.cs.unibo.it/~fioretti/CODE/NK/index.html) 
+
 ## Old Wiki
 
 The original code and wiki can be foud [here](https://wiki.bath.ac.uk/display/sendero/NKC).
